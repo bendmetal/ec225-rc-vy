@@ -288,7 +288,7 @@ function weightIndex(hpFt, oat, weightKg){
   const rowAtWi5 = (BOX_RIGHT_WI5_X - b)/m;
   const maxRow = Math.min(BOX_BOTTOM_ROW, rowAtWi5);
   if (row < startRow || row > maxRow){
-    return {error:'This Hp/OAT/Weight combination falls outside the plotted Weight Index chart.'};
+    return {error:'Human eyes required: this Hp/OAT/Weight combination sits outside the digitized Weight Index chart &mdash; check the actual Figure 9 chart rather than assuming it\'s not achievable.'};
   }
   const x = m*row + b;
   const wi = WI_AXIS_M*x + WI_AXIS_B;
@@ -389,9 +389,9 @@ function rateOfClimb(hpFt, oat, weightKg){
   if (wiRes.error) return {error: wiRes.error, stage:'weightIndex'};
   const hpKft = hpFt/1000;
   const row = rowForHpOat11b(hpKft, oat);
-  if (row===null) return {error:'This Hp/OAT combination falls outside the digitized Figure 11b Hp/OAT panel (torque-limit boundary, or above 10,000 ft).', stage:'panel1', wi: wiRes.wi};
+  if (row===null) return {error:'Human eyes required: this Hp/OAT combination sits outside what\'s been digitized from Figure 11b (torque-limit boundary, or above 10,000 ft) &mdash; check the actual chart rather than assuming it\'s not achievable.', stage:'panel1', wi: wiRes.wi};
   const rc = rcForRowWi(row, wiRes.wi);
-  if (rc===null) return {error:'This Weight Index/row combination falls outside the digitized Figure 11b Weight Index panel.', stage:'panel2', wi: wiRes.wi};
+  if (rc===null) return {error:'Human eyes required: this Weight Index/row combination sits outside the digitized Figure 11b Weight Index panel &mdash; check the actual chart rather than assuming it\'s not achievable.', stage:'panel2', wi: wiRes.wi};
   return {wi: wiRes.wi, rc};
 }
 
