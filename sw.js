@@ -1,7 +1,7 @@
 // EC225 Twin-Engine R/C at Vy - Service Worker
 // Caches the app for full offline use after first load
 
-const CACHE_NAME = 'ec225-rc-vy-v3';
+const CACHE_NAME = 'ec225-rc-vy-v4';
 const FILES_TO_CACHE = [
   './',
   './index.html'
